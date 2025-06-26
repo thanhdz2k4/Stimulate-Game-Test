@@ -8,20 +8,26 @@ namespace Chef.TThanh
     {
         public CleaningState(ChefController chef, ActionConfig config) : base(chef, config) { }
 
-        protected override void UpdateAction()
+        protected override void OnActionStart()
         {
-            // Cleaning animation speed based on progress
-            if (_chef.Animator != null)
+            base.OnActionStart();
+        }
+
+        protected override void OnActionUpdate()
+        {
+            base.OnActionUpdate();
+            if (IsCompleted())
             {
-                _chef.Animator.SetFloat("CleanSpeed", 1f + GetProgress());
+                _chef.TryStartAction(ChefAction.Idle);
             }
         }
 
-        protected override void OnActionEnd()
+        public override void OnExit()
         {
-            Debug.Log("Cleaning finished! Sparkles everywhere!");
-            _chef.TryStartAction(ChefAction.Idle);
+            base.OnExit();
         }
+
+
 
     }
 

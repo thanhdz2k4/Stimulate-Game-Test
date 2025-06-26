@@ -30,13 +30,6 @@ namespace Chef.TThanh
     {
         Idle,
         Walking,
-        Cooking,
         Cleaning,
-        Serving,
-        Chopping,
-        Washing,
-        Carrying,
-        Plating,
-        Grilling
     }
 }

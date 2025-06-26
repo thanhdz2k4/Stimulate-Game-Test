@@ -48,7 +48,7 @@ namespace Chef.TThanh
             {
                 _isCompleted = true;
             }
-            UpdateAction();
+            OnActionUpdate();
 
         }
 
@@ -88,7 +88,7 @@ namespace Chef.TThanh
 
         // Override these in specific actions
         protected virtual void OnActionStart() { }
-        protected virtual void UpdateAction() { }
+        protected virtual void OnActionUpdate() { }
         protected virtual void OnActionEnd() { }
         #endregion
 

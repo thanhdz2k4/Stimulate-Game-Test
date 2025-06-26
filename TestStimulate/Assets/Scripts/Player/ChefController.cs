@@ -23,16 +23,9 @@ public class ChefController : MonoBehaviour
     // Action Configurations
     private Dictionary<ChefAction, ActionConfig> _actionConfigs = new Dictionary<ChefAction, ActionConfig>
     {
-        { ChefAction.Idle, new ActionConfig("Idle", "IsIdle", 0f, true, true, false) },
-        { ChefAction.Walking, new ActionConfig("Walk", "IsWalking", 0f, true, true, false) },
-        { ChefAction.Cooking, new ActionConfig("Cook", "IsCooking", 2f, false, false, true) },
-        { ChefAction.Cleaning, new ActionConfig("Clean", "IsCleaning", 1.5f, false, false, true) },
-        { ChefAction.Serving, new ActionConfig("Serve", "IsServing", 1f, false, false, true) },
-        { ChefAction.Chopping, new ActionConfig("Chop", "IsChopping", 1.2f, false, false, true) },
-        { ChefAction.Washing, new ActionConfig("Wash", "IsWashing", 1.5f, false, false, true) },
-        { ChefAction.Carrying, new ActionConfig("Carry", "IsCarrying", 0f, true, true, true) },
-        { ChefAction.Plating, new ActionConfig("Plate", "IsPlating", 1.5f, false, false, true) },
-        { ChefAction.Grilling, new ActionConfig("Grill", "IsGrilling", 2f, false, false, true) }
+        { ChefAction.Idle, new ActionConfig("", "IsIdle", 0f, true, true, false) },
+        { ChefAction.Walking, new ActionConfig("", "IsWalking", 0f, true, true, false) },
+        { ChefAction.Cleaning, new ActionConfig("", "IsCleaning", 1.5f, false, false, true) },
     };
 
 
@@ -77,16 +70,19 @@ public class ChefController : MonoBehaviour
         {
             ChefAction.Idle => new IdleState(this, config),
             ChefAction.Walking => new WalkingState(this, config),
-            ChefAction.Cooking => new CleaningState(this, config),
+            ChefAction.Cleaning => new CleaningState(this, config),
 
         };
     }
 
     void Start()
     {
+        Debug.Log("=== ChefController Start() called ===");
+        
         // Start with Idle state
+        Debug.Log("=== Calling ChangeState(ChefAction.Idle) ===");
         _stateMachine.ChangeState(ChefAction.Idle);
-
+        Debug.Log("=== ChangeState completed ===");
     }
 
     void Update()
@@ -113,21 +109,16 @@ public class ChefController : MonoBehaviour
     private void HandleInput()
     {
         // Movement input
-        _moveInput.x = Input.GetAxis("Horizontal");
-        _moveInput.y = Input.GetAxis("Vertical");
+        _moveInput.x = Input.GetAxis("Vertical");
+        _moveInput.y = Input.GetAxis("Horizontal");
         _isMoving = _moveInput.magnitude > 0.1f;
 
         // Action inputs
         if (_stateMachine.CanChangeState())
         {
-            if (Input.GetKeyDown(KeyCode.C)) TryStartAction(ChefAction.Cooking);
+
             if (Input.GetKeyDown(KeyCode.V)) TryStartAction(ChefAction.Cleaning);
-            if (Input.GetKeyDown(KeyCode.E)) TryStartAction(ChefAction.Serving);
-            if (Input.GetKeyDown(KeyCode.X)) TryStartAction(ChefAction.Chopping);
-            if (Input.GetKeyDown(KeyCode.Z)) TryStartAction(ChefAction.Washing);
-            if (Input.GetKeyDown(KeyCode.F)) TryStartAction(ChefAction.Carrying);
-            if (Input.GetKeyDown(KeyCode.P)) TryStartAction(ChefAction.Plating);
-            if (Input.GetKeyDown(KeyCode.G)) TryStartAction(ChefAction.Grilling);
+
         }
     }
     
@@ -138,6 +129,8 @@ public class ChefController : MonoBehaviour
     
     private void OnStateChanged(ChefAction previous, ChefAction current)
     {
+        Debug.Log($"=== OnStateChanged called: {previous} → {current} ===");
+        
         if (previous != ChefAction.Idle) // Don't fire for initial state
         {
             OnActionCompleted?.Invoke(previous);
