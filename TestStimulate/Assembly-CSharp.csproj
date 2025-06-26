@@ -65,20 +65,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\3rdPerson+Fly\Scripts\Readme.cs" />
-    <Compile Include="Assets\Scripts\Player\PlayerCamera.cs" />
-    <Compile Include="Assets\Scripts\Player\Struct\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\Player\ActionConfig.cs" />
+    <Compile Include="Assets\Scripts\Patterns\State Machine\StateMachine.cs" />
+    <Compile Include="Assets\Scripts\Player\State\IdleState.cs" />
+    <Compile Include="Assets\Scripts\Player\State\Base\ChefActionState.cs" />
+    <Compile Include="Assets\Scripts\Player\ChefController.cs" />
     <Compile Include="Assets\3rdPerson+Fly\Scripts\LevelScripts\HintManagement.cs" />
     <Compile Include="Assets\3rdPerson+Fly\Scripts\LevelScripts\ThirdPersonOrbitCamBasic.cs" />
+    <Compile Include="Assets\Vendors_and_Customers\Scripts\SimpleCameraController.cs" />
     <Compile Include="Assets\3rdPerson+Fly\Scripts\PlayerScripts\MoveBehaviour.cs" />
     <Compile Include="Assets\3rdPerson+Fly\Scripts\PlayerScripts\AimBehaviourBasic.cs" />
-    <Compile Include="Assets\Scripts\Player\State\PlayerIdleState.cs" />
     <Compile Include="Assets\3rdPerson+Fly\Scripts\PlayerScripts\BasicBehaviour.cs" />
     <Compile Include="Assets\3rdPerson+Fly\Scripts\LevelScripts\ControlsTutorial.cs" />
-    <Compile Include="Assets\Scripts\Player\State\PlayerMoveState.cs" />
     <Compile Include="Assets\3rdPerson+Fly\Scripts\PlayerScripts\FlyBehaviour.cs" />
-    <Compile Include="Assets\Scripts\State Machine\StateMachine.cs" />
-    <Compile Include="Assets\Scripts\Animation Paramenter\EnumParamenter.cs" />
-    <Compile Include="Assets\Scripts\State Machine\State.cs" />
+    <Compile Include="Assets\Scripts\Player\State\CleaningState.cs" />
+    <Compile Include="Assets\Scripts\Player\State\WalkingState.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

@@ -367,13 +367,14 @@
 "Assets/3rdPerson+Fly/Scripts/PlayerScripts/FlyBehaviour.cs"
 "Assets/3rdPerson+Fly/Scripts/PlayerScripts/MoveBehaviour.cs"
 "Assets/3rdPerson+Fly/Scripts/Readme.cs"
-"Assets/Scripts/Animation Paramenter/EnumParamenter.cs"
-"Assets/Scripts/Player/PlayerCamera.cs"
-"Assets/Scripts/Player/State/PlayerIdleState.cs"
-"Assets/Scripts/Player/State/PlayerMoveState.cs"
-"Assets/Scripts/Player/Struct/PlayerController.cs"
-"Assets/Scripts/State Machine/State.cs"
-"Assets/Scripts/State Machine/StateMachine.cs"
+"Assets/Scripts/Patterns/State Machine/StateMachine.cs"
+"Assets/Scripts/Player/ActionConfig.cs"
+"Assets/Scripts/Player/ChefController.cs"
+"Assets/Scripts/Player/State/Base/ChefActionState.cs"
+"Assets/Scripts/Player/State/CleaningState.cs"
+"Assets/Scripts/Player/State/IdleState.cs"
+"Assets/Scripts/Player/State/WalkingState.cs"
+"Assets/Vendors_and_Customers/Scripts/SimpleCameraController.cs"
 -langversion:9.0
 /deterministic
 /optimize-
