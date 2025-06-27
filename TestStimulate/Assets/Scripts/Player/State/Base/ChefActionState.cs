@@ -26,17 +26,8 @@ namespace Chef.TThanh
         {
             _stateTimer = 0f;
             _isCompleted = false;
-
-            // Set animation parameters
-            if (!string.IsNullOrEmpty(_actionConfig.animationTrigger))
-            {
-                _chef.Animator.SetTrigger(_actionConfig.animationTrigger);
-            }
-            if (!string.IsNullOrEmpty(_actionConfig.animationBool))
-            {
-                _chef.Animator.SetBool(_actionConfig.animationBool, true);
-            }
-
+            // Blend từ animation hiện tại sang animation mới trong 0.2 giây
+            _chef.Animator.CrossFade(_actionConfig.actionAnimation[0].ToString(), _actionConfig.speedTransition);
             // Additional setup if needed
             OnActionStart();
         }
@@ -48,6 +39,7 @@ namespace Chef.TThanh
             {
                 _isCompleted = true;
             }
+            _chef.Animator.SetFloat("Speed", _actionConfig.speed);
             OnActionUpdate();
 
         }
@@ -56,14 +48,8 @@ namespace Chef.TThanh
 
         public virtual void OnExit()
         {
-            // Reset animation parameters
-            if (!string.IsNullOrEmpty(_actionConfig.animationBool))
-            {
-                _chef.Animator.SetBool(_actionConfig.animationBool, false);
-            }
-
-            // Additional cleanup if needed
             OnActionEnd();
+            _isCompleted = false;
         }
 
         #endregion

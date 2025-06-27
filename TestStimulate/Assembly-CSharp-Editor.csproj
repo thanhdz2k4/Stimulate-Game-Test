@@ -64,7 +64,9 @@
     <Analyzer Include="C:\Program Files\Unity 2020.3.41f1\2022.3.61f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Modern UI Pack\Editor\Scripts\ContextMenu.cs" />
     <Compile Include="Assets\3rdPerson+Fly\Scripts\Editor\ReadmeEditor.cs" />
+    <Compile Include="Assets\Modern UI Pack\Editor\Scripts\InitMUIP.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
